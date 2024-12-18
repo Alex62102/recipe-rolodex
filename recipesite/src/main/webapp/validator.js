@@ -10,7 +10,7 @@ function validatePassChange() {
     alert(blah);
     var oldpassfield = document.getElementById("oldpass");
     alert("After getElement");
-    var val = oldpassfield.getAttribute("value");
+    var val = oldpassfield.value;
     alert("After value");
     alert(val);
     var newpass=document.getElementById(newpass).value;
