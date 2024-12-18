@@ -21,14 +21,14 @@ import jakarta.persistence.TemporalType;
  * @author jmanno
  */
 @Entity
-@Table(name = "USERS")
+@Table(name = "Users")
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
     @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username"),
     @NamedQuery(name = "Users.findByAddress", query = "SELECT u FROM Users u WHERE u.address = :address"),
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
     @NamedQuery(name = "Users.findByDatecreated", query = "SELECT u FROM Users u WHERE u.datecreated = :datecreated")})
-public class User implements Serializable {
+public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,14 +46,14 @@ public class User implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date datecreated;
 
-    public User() {
+    public Users() {
     }
 
-    public User(String username) {
+    public Users(String username) {
         this.username = username;
     }
 
-    public User(String username, String address, String password, Date datecreated) {
+    public Users(String username, String address, String password, Date datecreated) {
         this.username = username;
         this.address = address;
         this.password = password;
@@ -102,10 +102,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof Users)) {
             return false;
         }
-        User other = (User) object;
+        Users other = (Users) object;
         if ((this.username == null && other.username != null) || (this.username != null && !this.username.equals(other.username))) {
             return false;
         }

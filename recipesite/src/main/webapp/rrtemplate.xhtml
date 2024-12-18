@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html">
+    
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Recipe Rolodex | <ui:insert name="title"></ui:insert></title>
+        <h:outputStylesheet library="css" name="recipemain.css" />
+    </h:head>
+    
+    <h:body>
+        <header>
+            <h1><a href="home.xhtml">Recipe Rolodex</a></h1>
+        </header>
+        
+        <nav>
+            <ui:insert name="nav">
+                <p>links</p>
+            </ui:insert>
+        </nav>
+        
+        <main>
+            <ui:insert name="content">Oops. This page is empty!</ui:insert>
+        </main>
+        
+        <footer>
+            <ui:insert name="footer">
+                <p>Recipe Rolodex</p>
+                <p>Developed by Alex Jiminez and Joseph Manno</p>
+            </ui:insert>
+        </footer>
+    </h:body>
+    
+</html>
