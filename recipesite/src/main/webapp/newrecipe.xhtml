@@ -14,7 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <ui:define name="title">New Recipe</ui:define>
         <ui:define name="content">
             <h2>New Recipe</h2>
-            <h:form>
+            <h:form class="twocolinput">
                 <h:outputLabel for="name">Recipe Name:</h:outputLabel>
                 <h:inputText id="name" value="TODO EL to bean"/>
                 
@@ -37,7 +37,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <h:inputText id="cuisine" value="TODO EL to bean"/>
                 
                 <!--TODO add action-->
-                <h:commandButton id="submit">Submit</h:commandButton>
+                <h:commandButton id="submit" value="Submit"/>
             </h:form>
         </ui:define>
     </ui:composition>
