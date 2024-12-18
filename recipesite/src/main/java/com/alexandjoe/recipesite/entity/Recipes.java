@@ -29,7 +29,7 @@ import jakarta.persistence.Table;
     @NamedQuery(name = "Recipes.findByPreptime", query = "SELECT r FROM Recipes r WHERE r.preptime = :preptime"),
     @NamedQuery(name = "Recipes.findByServings", query = "SELECT r FROM Recipes r WHERE r.servings = :servings"),
     @NamedQuery(name = "Recipes.findByCuisine", query = "SELECT r FROM Recipes r WHERE r.cuisine = :cuisine")})
-public class Recipe implements Serializable {
+public class Recipes implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,14 +57,14 @@ public class Recipe implements Serializable {
     @Column(name = "CUISINE")
     private String cuisine;
 
-    public Recipe() {
+    public Recipes() {
     }
 
-    public Recipe(Integer id) {
+    public Recipes(Integer id) {
         this.id = id;
     }
 
-    public Recipe(Integer id, String name, String poster) {
+    public Recipes(Integer id, String name, String poster) {
         this.id = id;
         this.name = name;
         this.poster = poster;
@@ -152,10 +152,10 @@ public class Recipe implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Recipe)) {
+        if (!(object instanceof Recipes)) {
             return false;
         }
-        Recipe other = (Recipe) object;
+        Recipes other = (Recipes) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

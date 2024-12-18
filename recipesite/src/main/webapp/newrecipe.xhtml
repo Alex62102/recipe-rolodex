@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+    
+    <ui:composition template="rrtemplate.xhtml">
+        <ui:define name="title">New Recipe</ui:define>
+        <ui:define name="content">
+            <h2>New Recipe</h2>
+            <h:form>
+                <h:outputLabel for="name">Recipe Name:</h:outputLabel>
+                <h:inputText id="name" value="TODO EL to bean"/>
+                
+                <h:outputLabel for="type">Meal Type:</h:outputLabel>
+                <h:inputText id="type" value="TODO EL to bean"/>
+                
+                <h:outputLabel for="ingredients">Ingredients:</h:outputLabel>
+                <h:inputTextarea id="ingredients" value="TODO EL to bean"/>
+                
+                <h:outputLabel for="process">Process:</h:outputLabel>
+                <h:inputTextarea id="process" value="TODO EL to bean"/>
+                
+                <h:outputLabel for="servings">Servings:</h:outputLabel>
+                <h:inputText id="servings" value="TODO EL to bean"/>
+                
+                <h:outputLabel for="preptime">Prep Time:</h:outputLabel>
+                <h:inputText id="preptime" value="TODO EL to bean"/>
+                
+                <h:outputLabel for="cuisine">Cuisine:</h:outputLabel>
+                <h:inputText id="cuisine" value="TODO EL to bean"/>
+                
+                <!--TODO add action-->
+                <h:commandButton id="submit">Submit</h:commandButton>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
