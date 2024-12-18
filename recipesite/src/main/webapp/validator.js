@@ -5,8 +5,14 @@
 
 function validatePassChange() {
     
-    var oldpass=document.forms["passchange"]["oldpass"].value;
-    alert(oldpass);
+    alert("Javascript Activated");
+    var blah = "blah";
+    alert(blah);
+    var oldpassfield = document.getElementById("oldpass");
+    alert("After getElement");
+    var val = oldpassfield.getAttribute("value");
+    alert("After value");
+    alert(val);
     var newpass=document.getElementById(newpass).value;
     var newpassconfirm=document.getElementById(newpassconfirm).value;
     
@@ -27,8 +33,12 @@ function validatePassChange() {
         alert("New password cannot be same as old password");
         return false;
     } else {
+        alert("Before true");
         return true;
+        alert("After true");
     }
+    
+    alert("Really end");
 }
 
 function validateLogin() {
