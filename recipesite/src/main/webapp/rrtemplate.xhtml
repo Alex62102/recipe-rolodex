@@ -22,17 +22,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         
         <nav>
             <ui:insert name="nav">
-                <p>links</p>
+                <ul>
+                    <li><a href="home.xhtml">Home</a></li>
+                    <li><a href="recipelist.xhtml">Recipes</a></li>
+                    <!--Make these change based on login status-->
+                    <li rendered="true"><a href="login.xhtml" rendered="true">Log In</a></li>
+                    <li rendered="false"><a href="profile.xhtml" rendered="false">My Profile</a></li>
+                    <!--Make logout a function?-->
+                    <li rendered="false"><a href="logout.xhtml" rendered="false">Log Out</a></li>
+                </ul>
             </ui:insert>
         </nav>
         
         <main>
+            <div id="maindiv">
             <ui:insert name="content">Oops. This page is empty!</ui:insert>
+            </div>
         </main>
         
         <footer>
             <ui:insert name="footer">
-                <p>Recipe Rolodex</p>
                 <p>Developed by Alex Jiminez and Joseph Manno</p>
             </ui:insert>
         </footer>
