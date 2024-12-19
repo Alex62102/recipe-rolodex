@@ -4,23 +4,15 @@
  */
 
 function validatePassChange() {
+    var oldpass = document.getElementById("passchange:oldpass").value;
+    var newpass = document.getElementById("passchange:newpass").value;
+    var newpassconfirm = document.getElementById("passchange:newpassconfirm").value;
     
-    alert("Javascript Activated");
-    var blah = "blah";
-    alert(blah);
-    var oldpassfield = document.getElementById("oldpass");
-    alert("After getElement");
-    var val = oldpassfield.value;
-    alert("After value");
-    alert(val);
-    var newpass=document.getElementById(newpass).value;
-    var newpassconfirm=document.getElementById(newpassconfirm).value;
-    
-    //Update to check old password against user password
-    if(oldpass === null || oldpass === "") {
+    // Update to check old password against user password
+    if(oldpass === "") {
         alert("Old Password cannot be left blank");
         return false;
-    } else if(newpass === null || newpass === "") {
+    } else if(newpass === "") {
         alert("New Password cannot be left blank");
         return false;
     } else if(badPassword(newpass)) {
@@ -33,12 +25,9 @@ function validatePassChange() {
         alert("New password cannot be same as old password");
         return false;
     } else {
-        alert("Before true");
-        return true;
-        alert("After true");
+        alert("Password successfully changed!");
+        return true;  // Form will be submitted if validation passes
     }
-    
-    alert("Really end");
 }
 
 function validateLogin() {
