@@ -35,7 +35,7 @@ public class Recipes implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "ID")
-    private Integer id;
+    private Long id; // Changed for Controllers Line 22
     @Basic(optional = false)
     @Column(name = "NAME")
     private String name;
