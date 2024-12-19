@@ -29,7 +29,7 @@ public class RecipesController implements Serializable {
     private static final long serialVersionUID = -8163374738411860012L;
     private Recipes current;
     private DataModel items = null;
-    @EJB RecipesFacade ejbFacade;
+    @EJB private RecipesFacade ejbFacade; // Made private by IDE suggestion
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

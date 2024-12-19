@@ -29,7 +29,7 @@ public class UsersController implements Serializable {
     private static final long serialVersionUID = -8163374738411860012L;
     private Users current;
     private DataModel items = null;
-    @EJB UsersFacade ejbFacade; // Made private by IDE suggestion
+    @EJB private UsersFacade ejbFacade; // Made private by IDE suggestion
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
