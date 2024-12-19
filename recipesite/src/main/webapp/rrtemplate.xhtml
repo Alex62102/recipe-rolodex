@@ -26,11 +26,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <ul>
                     <li><a href="home.xhtml">Home</a></li>
                     <li><a href="recipelist.xhtml">Recipes</a></li>
-                    <!--Make these change based on login status-->
-                    <li rendered="true"><a href="login.xhtml" rendered="true">Log In</a></li>
-                    <li rendered="false"><a href="profile.xhtml" rendered="false">My Profile</a></li>
-                    <!--Make logout a function?-->
-                    <li rendered="false"><a href="logout.xhtml" rendered="false">Log Out</a></li>
+                    <ui:fragment rendered="${!logStatus.loggedIn}">
+                        <li><a href="login.xhtml">Log In</a></li>
+                    </ui:fragment>
+                    <ui:fragment rendered="${logStatus.loggedIn}">
+                        <li><a href="profile.xhtml">My Profile</a></li>
+                        <li><a href="logout.xhtml">Log Out</a></li>
+                    </ui:fragment>
                 </ul>
             </ui:insert>
         </nav>

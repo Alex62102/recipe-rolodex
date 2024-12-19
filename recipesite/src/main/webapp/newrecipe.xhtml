@@ -38,7 +38,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <h:inputText id="preptime" name="preptime" value="#{recipesController.selected.preptime}"/>
                 
                 <!--TODO add action-->
-                <h:commandButton id="submit" value="Submit" type="submit" action="recipelist"/>
+                <h:commandButton id="submit" value="Submit" type="submit" action="#{recipesController.create}"/>
             </h:form>
         </ui:define>
     </ui:composition>

@@ -80,10 +80,11 @@ public class RecipesController implements Serializable {
     public String prepareCreate() {
         current = new Recipes();
         selectedItemIndex = -1;
-        return "Create";
+        return "myrecipes";
     }
     
     public String create() {
+        current.setPoster("NobodyImportant"); //update to get active user
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("RecipeCreated"));
