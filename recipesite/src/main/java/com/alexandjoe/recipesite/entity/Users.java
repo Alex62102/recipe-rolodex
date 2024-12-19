@@ -9,6 +9,8 @@ import java.util.Date;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
@@ -35,6 +37,7 @@ public class Users implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Basic(optional = false)
     @Column(name = "USERNAME")
