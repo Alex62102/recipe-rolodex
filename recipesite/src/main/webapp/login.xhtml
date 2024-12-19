@@ -14,15 +14,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <ui:define name="title">Log In</ui:define>
         <ui:define name="content">
             <h2>Log In</h2>
-            <h:form class="twocolinput">
+            <h:form class="twocolinput" id="login" name="login">
                 <h:outputLabel for="email">E-mail:</h:outputLabel>
                 <h:inputText id="email" value="TODO EL to bean"/>
                 
                 <h:outputLabel for="password">Password:</h:outputLabel>
-                <h:inputText id="password" value="TODO EL to bean"/>
+                <h:inputSecret id="password" value="TODO EL to bean"/>
                 
                 <!--TODO add action-->
-                <h:commandButton id="login" value="Log In"/>
+                <h:commandButton id="loginbutton" value="Log In"/>
             </h:form>
         </ui:define>
     </ui:composition>

@@ -31,7 +31,12 @@ function validatePassChange() {
 }
 
 function validateLogin() {
+    var email = document.getElementById("login:email").value;
+    var pass = document.getElementById("login:password").value;
     
+    if(email === "") {
+        
+    }
 }
 
 function validateRecipe() {
