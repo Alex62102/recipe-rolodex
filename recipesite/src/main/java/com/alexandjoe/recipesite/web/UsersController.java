@@ -17,6 +17,7 @@ import com.alexandjoe.recipesite.ejb.UsersFacade;
 import com.alexandjoe.recipesite.entity.Users;
 import com.alexandjoe.recipesite.web.util.JsfUtil;
 import com.alexandjoe.recipesite.web.util.PaginationHelper;
+import java.util.Date;
 
 /**
  * 
@@ -80,11 +81,12 @@ public class UsersController implements Serializable {
     public String prepareCreate() {
         current = new Users();
         selectedItemIndex = -1;
-        return "Create";
+        return "home";
     }
     
     public String create() {
         try {
+            current.setDatecreated(new Date());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserCreated"));
             return prepareCreate();
