@@ -11,10 +11,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
       xmlns:f="jakarta.faces.core">
     
     <ui:composition template="rrtemplate.xhtml">
-        <ui:define name="title">Log In</ui:define>
+        <ui:define name="title">Log Out</ui:define>
         <ui:define name="content">
             <h2>Log Out</h2>
-            <p>You have been successfully logged out. See you again soon!</p>
+            <ui:fragment rendered="${logStatus.loggedIn}">
+                <h:form>
+                    <p>Are you sure you want to log out?</p>
+                    <h:commandButton action="#{logStatus.logOut}" id="logoutlink" value="Log Out"/>
+                </h:form>
+            </ui:fragment>
+            <ui:fragment rendered="${!logStatus.loggedIn}">
+                <p>You have been successfully logged out. See you again soon!</p>
+            </ui:fragment>
         </ui:define>
     </ui:composition>
 </html>

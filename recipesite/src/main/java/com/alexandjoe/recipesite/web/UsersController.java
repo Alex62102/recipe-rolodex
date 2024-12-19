@@ -85,8 +85,9 @@ public class UsersController implements Serializable {
     }
     
     public String create() {
+        
+        current.setDatecreated(new Date());
         try {
-            current.setDatecreated(new Date());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserCreated"));
             return prepareCreate();

@@ -17,14 +17,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <h:form class="twocolinput" id="login" name="login"
                     method="post" onsubmit="return validateLogin();">
                 <h:outputLabel for="email">E-mail:</h:outputLabel>
-                <h:inputText id="email" value="#{usersController.selected.address}"/>
+                <h:inputText id="email" value="#{logStatus.emailIn}"/>
                 
                 <h:outputLabel for="password">Password:</h:outputLabel>
-                <h:inputSecret id="password" value="#{usersController.selected.pasword}"/>
+                <h:inputSecret id="password" value="#{logStatus.passIn}"/>
                 
                 <!--TODO add action-->
-                <h:commandButton id="loginbutton" value="Log In" type="submit" action="home"/>
+                <h:commandButton id="loginbutton" value="Log In" type="submit" action="#{logStatus.logIn}"/>
             </h:form>
+            
+            <p>New to the Recipe Rolodex? <b><a href="newuser.xhtml">Register here!</a></b></p>
+            
         </ui:define>
     </ui:composition>
 </html>
