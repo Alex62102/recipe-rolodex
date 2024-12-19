@@ -21,9 +21,10 @@ import jakarta.persistence.TemporalType;
  * @author jmanno
  */
 @Entity
-@Table(name = "Users")
+@Table(name = "USERS")
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
+    @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
     @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username"),
     @NamedQuery(name = "Users.findByAddress", query = "SELECT u FROM Users u WHERE u.address = :address"),
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
@@ -32,6 +33,9 @@ public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @Basic(optional = false)
+    @Column(name = "ID")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "USERNAME")
     private String username;
@@ -49,15 +53,24 @@ public class Users implements Serializable {
     public Users() {
     }
 
-    public Users(String username) {
-        this.username = username;
+    public Users(Long id) {
+        this.id = id;
     }
 
-    public Users(String username, String address, String password, Date datecreated) {
+    public Users(Long id, String username, String address, String password, Date datecreated) {
+        this.id = id;
         this.username = username;
         this.address = address;
         this.password = password;
         this.datecreated = datecreated;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -95,7 +108,7 @@ public class Users implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (username != null ? username.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -106,7 +119,7 @@ public class Users implements Serializable {
             return false;
         }
         Users other = (Users) object;
-        if ((this.username == null && other.username != null) || (this.username != null && !this.username.equals(other.username))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -114,7 +127,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "com.alexandjoe.recipesite.entity.Users[ username=" + username + " ]";
+        return "com.alexandjoe.recipesite.entity.Users[ id=" + id + " ]";
     }
     
 }

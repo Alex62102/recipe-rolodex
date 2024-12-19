@@ -35,7 +35,7 @@ public class Recipes implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "ID")
-    private Long id; // Changed for Controllers Line 22
+    private Long id;
     @Basic(optional = false)
     @Column(name = "NAME")
     private String name;
@@ -60,21 +60,21 @@ public class Recipes implements Serializable {
     public Recipes() {
     }
 
-    public Recipes(Integer id) {
+    public Recipes(Long id) {
         this.id = id;
     }
 
-    public Recipes(Integer id, String name, String poster) {
+    public Recipes(Long id, String name, String poster) {
         this.id = id;
         this.name = name;
         this.poster = poster;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
