@@ -14,24 +14,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <ui:define name="title">New User Registration</ui:define>
         <ui:define name="content">
             <h2>New User Registration</h2>
-            <h:form class="twocolinput">
+            <h:form class="twocolinput" id="newuser" name="newuser"
+                    method="post" onsubmit="return validateNewUser();">
                 <h:outputLabel for="email">E-mail:</h:outputLabel>
-                <h:inputText id="email" value="TODO EL to bean"/>
+                <h:inputText id="email" name="email" value="TODO EL to bean"/>
                 
                 <h:outputLabel for="emailconfirm">Confirm E-mail:</h:outputLabel>
-                <h:inputText id="emailconfirm" value="TODO"/>
+                <h:inputText id="emailconfirm" name="emailconfirm" value="TODO"/>
                 
                 <h:outputLabel for="username">Username:</h:outputLabel>
-                <h:inputText id="username" value="TODO EL to bean"/>
+                <h:inputText id="username" name="username" value="TODO EL to bean"/>
                 
                 <h:outputLabel for="password">Password:</h:outputLabel>
-                <h:inputText id="password" value="TODO EL to bean"/>
+                <h:inputSecret id="password" name="password" value="TODO EL to bean"/>
                 
                 <h:outputLabel for="passwordconfirm">Confirm Password:</h:outputLabel>
-                <h:inputText id="passwordconfirm" value="TODO EL to bean"/>
+                <h:inputSecret id="passwordconfirm" name="passwordconfirm" value="TODO EL to bean"/>
                 
-                <!--TODO add action-->
-                <h:commandButton id="register" value="Register"/>
+                <h:commandButton id="register" value="Register" type="submit" action="home"/>
+                
             </h:form>
         </ui:define>
     </ui:composition>

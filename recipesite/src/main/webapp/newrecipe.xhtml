@@ -14,30 +14,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <ui:define name="title">New Recipe</ui:define>
         <ui:define name="content">
             <h2>New Recipe</h2>
-            <h:form class="twocolinput">
+            <h:form class="twocolinput" id="newrecipe"
+                    method="post" onsubmit="return validateRecipe();">
                 <h:outputLabel for="name">Recipe Name:</h:outputLabel>
-                <h:inputText id="name" value="TODO EL to bean"/>
+                <h:inputText id="name" name="name" value="TODO EL to bean"/>
                 
                 <h:outputLabel for="type">Meal Type:</h:outputLabel>
-                <h:inputText id="type" value="TODO EL to bean"/>
+                <h:inputText id="type" name="type" value="TODO EL to bean"/>
                 
                 <h:outputLabel for="cuisine">Cuisine:</h:outputLabel>
-                <h:inputText id="cuisine" value="TODO EL to bean"/>
+                <h:inputText id="cuisine" name="cuisine" value="TODO EL to bean"/>
                 
                 <h:outputLabel for="ingredients">Ingredients:</h:outputLabel>
-                <h:inputTextarea id="ingredients" value="TODO EL to bean"/>
+                <h:inputTextarea id="ingredients" name="ingredients" value="TODO EL to bean"/>
                 
                 <h:outputLabel for="process">Process:</h:outputLabel>
-                <h:inputTextarea id="process" value="TODO EL to bean"/>
+                <h:inputTextarea id="process" name="process" value="TODO EL to bean"/>
                 
                 <h:outputLabel for="servings">Servings:</h:outputLabel>
-                <h:inputText id="servings" value="TODO EL to bean"/>
+                <h:inputText id="servings" name="servings" value="TODO EL to bean"/>
                 
                 <h:outputLabel for="preptime">Prep Time:</h:outputLabel>
-                <h:inputText id="preptime" value="TODO EL to bean"/>
+                <h:inputText id="preptime" name="preptime" value="TODO EL to bean"/>
                 
                 <!--TODO add action-->
-                <h:commandButton id="submit" value="Submit"/>
+                <h:commandButton id="submit" value="Submit" type="submit" action="recipelist"/>
             </h:form>
         </ui:define>
     </ui:composition>

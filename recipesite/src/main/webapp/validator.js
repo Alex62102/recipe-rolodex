@@ -31,15 +31,68 @@ function validatePassChange() {
 }
 
 function validateLogin() {
+    var email = document.getElementById("login:email").value;
+    var pass = document.getElementById("login:password").value;
     
+    //TODO check email and password against database
+    if(email === "") {
+        alert("Please enter your e-mail address");
+        return false;
+    } else if(!isEmail(email)) {
+        alert("Please enter a valid e-mail address");
+        return false;
+    } else if(pass === "") {
+        alert("Please enter your password");
+        return false;
+    } else {
+        alert("Welcome!");
+        return true;
+    }
 }
 
 function validateRecipe() {
+    var name = document.getElementById("newrecipe:name").value;
+    var servings = document.getElementById("newrecipe:servings").value;
+    var preptime = document.getElementById("newrecipe:preptime").value;
     
+    if(name === "") {
+        alert("Please provide a name for the recipe");
+    } else if(isNaN(servings)) {
+        alert("Please enter the servings yield as a whole number");
+    } else if(isNaN(preptime)) { //TODO Still accepts decimals
+        alert("Please enter the prep time as a whole number of minutes");
+    } else {
+        alert("New recipe \"" + name + "\" has been submitted!");
+        return true;
+    }
+    return false;
 }
 
 function validateNewUser() {
+    var email = document.getElementById("newuser:email").value;
+    var emailconfirm = document.getElementById("newuser:emailconfirm").value;
+    var username = document.getElementById("newuser:username").value;
+    var password = document.getElementById("newuser:password").value;
+    var passwordconfirm = document.getElementById("newuser:passwordconfirm").value;
     
+    if(email === "") {
+        alert("Please enter an e-mail address");
+    } else if(!isEmail(email)) {
+        alert("Please enter a valid e-mail address");
+    } else if(email !== emailconfirm) {
+        alert("Email confirmation does not match");
+    } else if(username.length < 4) {
+        alert("Please enter a username of four or more characters");
+        //TODO check if username is already taken
+    } else if(badPassword(password)) {
+        alert("Password must be at least 8 characters and not contain whitespace");
+    } else if(password !== passwordconfirm) {
+        alert("Password confirmation does not match");
+    } else {
+        alert("New user successfully created. Welcome, " + username + "!");
+        return true;
+    }
+    return false;
 }
 
 function badPassword(pass) {
@@ -50,3 +103,12 @@ function badPassword(pass) {
     return false;
 }
 
+function isEmail(email) {
+    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,})$/; //regex from stack overflow
+    
+    if(reg.test(email)) {
+        return true;
+    } else {
+        return false;
+    }
+}
