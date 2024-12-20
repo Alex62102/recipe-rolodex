@@ -15,9 +15,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <ui:define name="content">
             <ui:fragment rendered="${logStatus.loggedIn}">
                 <h2>${logStatus.username}'s Profile</h2>
-                <p>TODO Add user info</p>
-                <a href="myrecipes.xhtml">My Recipes</a>
-                <a href="newrecipe.xhtml">Submit a new recipe</a>
+                <ul>
+                    <li><a href="myrecipes.xhtml">My Recipes</a></li>
+                    <li><a href="newrecipe.xhtml">Submit a new recipe</a></li>
+                    <li><a href="changepassword.xhtml">Change password</a></li>
+                </ul>
             </ui:fragment>
             <ui:fragment rendered="${!logStatus.loggedIn}">
                 <h2>Profile</h2>
