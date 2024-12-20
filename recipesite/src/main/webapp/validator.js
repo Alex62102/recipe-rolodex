@@ -25,27 +25,24 @@ function validatePassChange() {
         alert("New password cannot be same as old password");
         return false;
     } else {
-        alert("Password successfully changed!");
+        //alert("Password successfully changed!");
         return true;  // Form will be submitted if validation passes
     }
 }
 
 function validateLogin() {
-    var email = document.getElementById("login:email").value;
+    var username = document.getElementById("login:username").value;
     var pass = document.getElementById("login:password").value;
     
     //TODO check email and password against database
-    if(email === "") {
-        alert("Please enter your e-mail address");
-        return false;
-    } else if(!isEmail(email)) {
-        alert("Please enter a valid e-mail address");
+    if(username === "") {
+        alert("Please enter your username");
         return false;
     } else if(pass === "") {
         alert("Please enter your password");
         return false;
     } else {
-        alert("Welcome!");
+        //alert("Welcome!");
         return true;
     }
 }
@@ -62,7 +59,7 @@ function validateRecipe() {
     } else if(isNaN(preptime)) { //TODO Still accepts decimals
         alert("Please enter the prep time as a whole number of minutes");
     } else {
-        alert("New recipe \"" + name + "\" has been submitted!");
+        //alert("New recipe \"" + name + "\" has been submitted!");
         return true;
     }
     return false;
@@ -89,10 +86,42 @@ function validateNewUser() {
     } else if(password !== passwordconfirm) {
         alert("Password confirmation does not match");
     } else {
-        alert("New user successfully created. Welcome, " + username + "!");
+        //alert("New user successfully created. Welcome, " + username + "!");
         return true;
     }
     return false;
+}
+
+function validatePassChange() {
+    var oldpass = document.getElementById("passchange:oldpass").value;
+    var newpass = document.getElementById("passchange:newpass").value;
+    var newpassconfirm = document.getElementById("passchange:newpassconfirm").value;
+    
+    if(oldpass === "") {
+        alert("Old Password cannot be left blank");
+    } else if(newpass === "") {
+        alert("New Password cannot be left blank");
+    } else if(newpassconfirm === "") {
+        alert("Confirm New Password cannot be left blank");
+    } else if(badPassword(oldpass) || badPassword(newpass)) {
+        alert("Password must be at least 8 characters and not contain whitespace");
+    } else if(newpass !== newpassconfirm) {
+        alert("New password confirmation does not match");
+    } else {
+        return true;
+    }
+    return false;
+}
+
+function validatePassReset() {
+    var username = document.getElementById("passreset:username").value;
+    
+    if(username === "") {
+        alert("Username cannot be left empty");
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function badPassword(pass) {

@@ -10,8 +10,17 @@ a {
 }
 
 #maindiv {
+    margin-top: 1em;
+    margin-left: 2em;
+    padding-bottom: 2em;
+    padding-top: 1em;
+    padding-left: 1em;
     background-color: #f3eed1;
     color: black;
+}
+
+header {
+    margin-left: 2em;
 }
 
 main a {
@@ -37,18 +46,10 @@ nav li {
 
 footer p {
     float: right;
-    padding: 2em;
+    padding: 0.5em;
 }
 
 .twocolinput {
     display: grid;
-    grid-template-columns: auto auto;
-}
-
-.loggedin {
-    
-}
-
-.loggedout {
-    
+    grid-template-columns: max-content max-content;
 }

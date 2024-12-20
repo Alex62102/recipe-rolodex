@@ -81,11 +81,14 @@ public class UsersController implements Serializable {
     public String prepareCreate() {
         current = new Users();
         selectedItemIndex = -1;
-        return "home";
+        return "login";
     }
     
     public String create() {
-        
+        if(userExists(current.getUsername())) {
+            JsfUtil.addErrorMessage("This username is already in use");
+            return null;
+        }
         current.setDatecreated(new Date());
         try {
             getFacade().create(current);
@@ -189,6 +192,11 @@ public class UsersController implements Serializable {
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
+    
+    //Testing
+    public boolean userExists(String username) {
+        return ejbFacade.userExists(username);
+    }
 
     // Users does not have an ID column, must be set
     @FacesConverter(forClass=Users.class)
@@ -233,7 +241,6 @@ public class UsersController implements Serializable {
                         UsersController.class.getName());
             }
         }
-
 
     }
 }

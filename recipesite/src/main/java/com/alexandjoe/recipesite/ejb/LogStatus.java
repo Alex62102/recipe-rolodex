@@ -4,6 +4,8 @@
  */
 package com.alexandjoe.recipesite.ejb;
 
+import com.alexandjoe.recipesite.web.util.JsfUtil;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateful;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -19,12 +21,16 @@ import java.io.Serializable;
 public class LogStatus implements Serializable {
 
     private static final long serialVersionUID = 4866453L;
+    @EJB private UsersFacade usersFacade;
     
     private boolean loggedIn;
     private String username;
     
-    private String emailIn;
+    private String userIn;
     private String passIn;
+    
+    private String oldPass;
+    private String newPass;
     
     public LogStatus() {
         loggedIn = false;
@@ -46,12 +52,12 @@ public class LogStatus implements Serializable {
         return username;
     }
     
-    public void setEmailIn(String s) {
-        emailIn = s;
+    public void setUserIn(String s) {
+        userIn = s;
     }
     
-    public String getEmailIn() {
-        return emailIn;
+    public String getUserIn() {
+        return userIn;
     }
     
     public void setPassIn(String s) {
@@ -62,10 +68,34 @@ public class LogStatus implements Serializable {
         return passIn;
     }
     
+    public void setOldPass(String s) {
+        oldPass = s;
+    }
+    
+    public String getOldPass() {
+        return oldPass;
+    }
+    
+    public void setNewPass(String s) {
+        newPass = s;
+    }
+    
+    public String getNewPass() {
+        return newPass;
+    }
+    
     public String logIn() {
-        //Check email against database
-        username = emailIn.split("@")[0]; //replace with name of user based on email
+        if(!usersFacade.userExists(userIn)) {
+            JsfUtil.addErrorMessage("No user exists with that username");
+            return null;
+        }
+        if(!usersFacade.matchPassword(userIn, passIn)) {
+            JsfUtil.addErrorMessage("Username and password do not match");
+            return null;
+        }
+        username = userIn;
         loggedIn = true;
+        userIn = null;
         passIn = null;
         return "profile";
     }
@@ -74,5 +104,27 @@ public class LogStatus implements Serializable {
         username = null;
         loggedIn = false;
         return "logout";
+    }
+    
+    public String changePass() {
+        if(!usersFacade.matchPassword(username, oldPass)) {
+            JsfUtil.addErrorMessage("Old password is incorrect");
+            return null;
+        } else {
+            usersFacade.changePassword(username, newPass);
+            oldPass = null;
+            newPass = null;
+            return "profile";
+        }
+    }
+    
+    public String reset() {
+        if(!usersFacade.userExists(userIn)) {
+            JsfUtil.addErrorMessage("No user exists with that username");
+            return null;
+        } else {
+            usersFacade.changePassword(userIn, "Password1234!");
+            return "login";
+        }
     }
 }
