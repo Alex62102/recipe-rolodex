@@ -25,24 +25,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                     <h:commandLink action="#{recipesController.previous}" value="#{bundle.Previous} #{recipesController.pagination.pageSize}" rendered="#{recipesController.pagination.hasPreviousPage}"/>&#160;<!--&nbsp;-->
                     <h:commandLink action="#{recipesController.next}" value="#{bundle.Next} #{recipesController.pagination.pageSize}" rendered="#{recipesController.pagination.hasNextPage}"/>&#160;<!--&nbsp;-->
                     <h:dataTable value="#{recipesController.items}" var="item" summary="Recipe list" border="0" cellpadding="2" cellspacing="0" rules="all" style="border:solid 1px">
-                        <h:column>
+                        <!--<h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.RecipeListRecipeTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
-                        </h:column>
+                        </h:column>-->
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.RecipeListRecipeTitle_name}"/>
                             </f:facet>
                             <h:outputText value="#{item.name}"/>
                         </h:column>
-                        <h:column>
+                        <!--<h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.RecipeListRecipeTitle_poster}"/>
                             </f:facet>
                             <h:outputText value="#{item.poster}"/>
-                        </h:column>
+                        </h:column>-->
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.RecipeListRecipeTitle_type}"/>
@@ -80,20 +80,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                             </f:facet>
                             <h:outputText value="#{item.cuisine}"/>
                         </h:column>
-                        <h:column>
+                        <!--<h:column>
                             <f:facet name="header">
-                                <h:outputText value="&#160;"/><!--&nbsp;-->
+                                <h:outputText value="&#160;"/>\<!- &nbsp;- >
                             </f:facet>
                             <h:commandLink action="#{recipesController.prepareView}" value="#{bundle.RecipeListRecipeViewLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{recipesController.prepareEdit}" value="#{bundle.RecipeListRecipeEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{recipesController.destroy}" value="#{bundle.RecipeListRecipeDestroyLink}"/>
-                        </h:column>
+                        </h:column>-->
                     </h:dataTable>
                 
                 <br />
+                <ui:fragment rendered='${logStatus.loggedIn}'>
                 <h:commandLink action="newrecipe" value="#{bundle.RecipeListRecipeCreateLink}"/>
+                </ui:fragment>
                 <br />
                 <br />
                 <h:commandLink value="#{bundle.RecipeListRecipeHomeLink}" action="/home" immediate="true" />

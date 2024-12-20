@@ -94,7 +94,7 @@ public class RecipesController implements Serializable {
     public String prepareCreate() {
         current = new Recipes();
         selectedItemIndex = -1;
-        return "myrecipes";
+        return "recipelist";
     }
     
     public String create() {
