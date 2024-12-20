@@ -15,7 +15,90 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <ui:define name="content">
             <h2>Recipes</h2>
             <p>TODO Add recipe search?</p>
-            <p>TODO Add recipe list from DB</p>
+            <h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: #d20005" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.RecipeListRecipeEmpty}" rendered="#{recipesController.items.rowCount == 0}"/>
+                
+                    <h:outputText value="#{recipesController.pagination.pageFirstItem + 1}..#{recipesController.pagination.pageLastItem + 1}/#{recipesController.pagination.itemsCount}"/>&#160;<!--&nbsp;-->
+                    <h:commandLink action="#{recipesController.previous}" value="#{bundle.Previous} #{recipesController.pagination.pageSize}" rendered="#{recipesController.pagination.hasPreviousPage}"/>&#160;<!--&nbsp;-->
+                    <h:commandLink action="#{recipesController.next}" value="#{bundle.Next} #{recipesController.pagination.pageSize}" rendered="#{recipesController.pagination.hasNextPage}"/>&#160;<!--&nbsp;-->
+                    <h:dataTable value="#{recipesController.items}" var="item" summary="Recipe list" border="0" cellpadding="2" cellspacing="0" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.RecipeListRecipeTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.RecipeListRecipeTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.RecipeListRecipeTitle_poster}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.poster}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.RecipeListRecipeTitle_type}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.type}">
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.RecipeListRecipeTitle_ingredients}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ingredients}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.RecipeListRecipeTitle_process}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.process}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.RecipeListRecipeTitle_prepTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.preptime}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.RecipeListRecipeTitle_servings}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.servings}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.RecipeListRecipeTitle_cuisine}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cuisine}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&#160;"/><!--&nbsp;-->
+                            </f:facet>
+                            <h:commandLink action="#{recipesController.prepareView}" value="#{bundle.RecipeListRecipeViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{recipesController.prepareEdit}" value="#{bundle.RecipeListRecipeEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{recipesController.destroy}" value="#{bundle.RecipeListRecipeDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                
+                <br />
+                <h:commandLink action="newrecipe" value="#{bundle.RecipeListRecipeCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.RecipeListRecipeHomeLink}" action="/home" immediate="true" />
+            
+            </h:form>
         </ui:define>
     </ui:composition>
 </html>
