@@ -49,6 +49,7 @@ public class LogStatus implements Serializable {
     }
     
     public String getUsername() {
+        System.out.println("Under get Username-" + userIn + "-" + username );
         return username;
     }
     
@@ -94,6 +95,7 @@ public class LogStatus implements Serializable {
             return null;
         }
         username = userIn;
+        System.out.println(username);
         loggedIn = true;
         userIn = null;
         passIn = null;
