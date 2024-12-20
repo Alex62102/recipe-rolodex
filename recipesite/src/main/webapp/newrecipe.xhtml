@@ -14,6 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <ui:define name="title">New Recipe</ui:define>
         <ui:define name="content">
             <h2>New Recipe</h2>
+            <ui:fragment rendered="${logStatus.loggedIn}">
             <h:form class="twocolinput" id="newrecipe"
                     method="post" onsubmit="return validateRecipe();">
                 <h:outputLabel for="name">Recipe Name:</h:outputLabel>
@@ -37,9 +38,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <h:outputLabel for="preptime">Prep Time:</h:outputLabel>
                 <h:inputText id="preptime" name="preptime" value="#{recipesController.selected.preptime}"/>
                 
-                <!--TODO add action-->
+                <!--TODO add action, possible edit on action here!!-->
                 <h:commandButton id="submit" value="Submit" type="submit" action="#{recipesController.create}"/>
             </h:form>
+            </ui:fragment>
+            <ui:fragment rendered="${!logStatus.loggedIn}">
+                <p>You must be logged in to post recipes. Please log in and try again.</p>
+            </ui:fragment>
         </ui:define>
     </ui:composition>
 </html>
