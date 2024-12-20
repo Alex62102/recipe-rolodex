@@ -4,6 +4,8 @@
  */
 package com.alexandjoe.recipesite.ejb;
 
+import com.alexandjoe.recipesite.web.util.JsfUtil;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateful;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -19,11 +21,12 @@ import java.io.Serializable;
 public class LogStatus implements Serializable {
 
     private static final long serialVersionUID = 4866453L;
+    @EJB private UsersFacade usersFacade;
     
     private boolean loggedIn;
     private String username;
     
-    private String emailIn;
+    private String userIn;
     private String passIn;
     
     public LogStatus() {
@@ -46,12 +49,12 @@ public class LogStatus implements Serializable {
         return username;
     }
     
-    public void setEmailIn(String s) {
-        emailIn = s;
+    public void setUserIn(String s) {
+        userIn = s;
     }
     
-    public String getEmailIn() {
-        return emailIn;
+    public String getUserIn() {
+        return userIn;
     }
     
     public void setPassIn(String s) {
@@ -63,8 +66,15 @@ public class LogStatus implements Serializable {
     }
     
     public String logIn() {
-        //Check email against database
-        username = emailIn.split("@")[0]; //replace with name of user based on email
+        if(!usersFacade.userExists(userIn)) {
+            JsfUtil.addErrorMessage("No user exists with that username");
+            return null;
+        }
+        if(!usersFacade.matchPassword(userIn, passIn)) {
+            JsfUtil.addErrorMessage("Username and password do not match");
+            return null;
+        }
+        username = userIn.split("@")[0]; //replace with name of user based on email
         loggedIn = true;
         passIn = null;
         return "profile";

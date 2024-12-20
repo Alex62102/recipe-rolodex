@@ -25,27 +25,24 @@ function validatePassChange() {
         alert("New password cannot be same as old password");
         return false;
     } else {
-        alert("Password successfully changed!");
+        //alert("Password successfully changed!");
         return true;  // Form will be submitted if validation passes
     }
 }
 
 function validateLogin() {
-    var email = document.getElementById("login:email").value;
+    var username = document.getElementById("login:username").value;
     var pass = document.getElementById("login:password").value;
     
     //TODO check email and password against database
-    if(email === "") {
-        alert("Please enter your e-mail address");
-        return false;
-    } else if(!isEmail(email)) {
-        alert("Please enter a valid e-mail address");
+    if(username === "") {
+        alert("Please enter your username");
         return false;
     } else if(pass === "") {
         alert("Please enter your password");
         return false;
     } else {
-        alert("Welcome!");
+        //alert("Welcome!");
         return true;
     }
 }
@@ -89,7 +86,7 @@ function validateNewUser() {
     } else if(password !== passwordconfirm) {
         alert("Password confirmation does not match");
     } else {
-        alert("New user successfully created. Welcome, " + username + "!");
+        //alert("New user successfully created. Welcome, " + username + "!");
         return true;
     }
     return false;
