@@ -34,6 +34,12 @@ public class UsersFacade extends AbstractFacade<Users> {
         return getSingleUser(username).getPassword().equals(password);
     }
     
+    public void changePassword(String username, String password) {
+        Users u = getSingleUser(username);
+        u.setPassword(password);
+        edit(u);
+    }
+    
     public boolean userExists(String username) {
         String jpql = "SELECT COUNT(u) FROM Users u WHERE u.username = :username";
         TypedQuery<Long> query = getEntityManager().createQuery(jpql, Long.class);

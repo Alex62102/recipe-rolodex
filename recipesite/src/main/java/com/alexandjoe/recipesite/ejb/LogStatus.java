@@ -32,8 +32,6 @@ public class LogStatus implements Serializable {
     private String oldPass;
     private String newPass;
     
-    
-    
     public LogStatus() {
         loggedIn = false;
     }
@@ -70,6 +68,22 @@ public class LogStatus implements Serializable {
         return passIn;
     }
     
+    public void setOldPass(String s) {
+        oldPass = s;
+    }
+    
+    public String getOldPass() {
+        return oldPass;
+    }
+    
+    public void setNewPass(String s) {
+        newPass = s;
+    }
+    
+    public String getNewPass() {
+        return newPass;
+    }
+    
     public String logIn() {
         if(!usersFacade.userExists(userIn)) {
             JsfUtil.addErrorMessage("No user exists with that username");
@@ -79,8 +93,9 @@ public class LogStatus implements Serializable {
             JsfUtil.addErrorMessage("Username and password do not match");
             return null;
         }
-        username = userIn.split("@")[0]; //replace with name of user based on email
+        username = userIn;
         loggedIn = true;
+        userIn = null;
         passIn = null;
         return "profile";
     }
@@ -89,5 +104,27 @@ public class LogStatus implements Serializable {
         username = null;
         loggedIn = false;
         return "logout";
+    }
+    
+    public String changePass() {
+        if(!usersFacade.matchPassword(username, oldPass)) {
+            JsfUtil.addErrorMessage("Old password is incorrect");
+            return null;
+        } else {
+            usersFacade.changePassword(username, newPass);
+            oldPass = null;
+            newPass = null;
+            return "profile";
+        }
+    }
+    
+    public String reset() {
+        if(!usersFacade.userExists(userIn)) {
+            JsfUtil.addErrorMessage("No user exists with that username");
+            return null;
+        } else {
+            usersFacade.changePassword(userIn, "Password1234!");
+            return "login";
+        }
     }
 }

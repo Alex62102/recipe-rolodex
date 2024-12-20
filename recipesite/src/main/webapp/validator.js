@@ -59,7 +59,7 @@ function validateRecipe() {
     } else if(isNaN(preptime)) { //TODO Still accepts decimals
         alert("Please enter the prep time as a whole number of minutes");
     } else {
-        alert("New recipe \"" + name + "\" has been submitted!");
+        //alert("New recipe \"" + name + "\" has been submitted!");
         return true;
     }
     return false;
@@ -90,6 +90,38 @@ function validateNewUser() {
         return true;
     }
     return false;
+}
+
+function validatePassChange() {
+    var oldpass = document.getElementById("passchange:oldpass").value;
+    var newpass = document.getElementById("passchange:newpass").value;
+    var newpassconfirm = document.getElementById("passchange:newpassconfirm").value;
+    
+    if(oldpass === "") {
+        alert("Old Password cannot be left blank");
+    } else if(newpass === "") {
+        alert("New Password cannot be left blank");
+    } else if(newpassconfirm === "") {
+        alert("Confirm New Password cannot be left blank");
+    } else if(badPassword(oldpass) || badPassword(newpass)) {
+        alert("Password must be at least 8 characters and not contain whitespace");
+    } else if(newpass !== newpassconfirm) {
+        alert("New password confirmation does not match");
+    } else {
+        return true;
+    }
+    return false;
+}
+
+function validatePassReset() {
+    var username = document.getElementById("passreset:username").value;
+    
+    if(username === "") {
+        alert("Username cannot be left empty");
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function badPassword(pass) {
