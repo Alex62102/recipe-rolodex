@@ -29,6 +29,11 @@ public class LogStatus implements Serializable {
     private String userIn;
     private String passIn;
     
+    private String oldPass;
+    private String newPass;
+    
+    
+    
     public LogStatus() {
         loggedIn = false;
     }

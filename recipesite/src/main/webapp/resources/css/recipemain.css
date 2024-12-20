@@ -46,18 +46,10 @@ nav li {
 
 footer p {
     float: right;
-    padding: 2em;
+    padding: 0.5em;
 }
 
 .twocolinput {
     display: grid;
-    grid-template-columns: auto auto;
-}
-
-.loggedin {
-    
-}
-
-.loggedout {
-    
+    grid-template-columns: max-content max-content;
 }
